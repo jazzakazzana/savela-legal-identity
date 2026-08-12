@@ -34,13 +34,16 @@ export function Header() {
       <div className="container-site flex h-20 items-center justify-between md:h-24">
         <Logo />
 
-        <nav aria-label="Navegação principal" className="hidden items-center gap-8 lg:flex">
+        <nav
+          aria-label="Navegação principal"
+          className="hidden items-center gap-5 lg:flex xl:gap-7"
+        >
           {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
               activeOptions={{ exact: link.to === "/" }}
-              className="link-underline text-[0.8125rem] font-light tracking-[0.12em] text-offwhite/85 uppercase transition-colors hover:text-offwhite [&.active]:text-gold"
+              className="link-underline text-[0.75rem] font-light tracking-[0.1em] whitespace-nowrap text-offwhite/85 uppercase transition-colors hover:text-offwhite [&.active]:text-gold xl:text-[0.8125rem]"
             >
               {link.label}
             </Link>
@@ -49,7 +52,7 @@ export function Header() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-xs border border-gold/70 px-5 py-2.5 text-[0.75rem] font-bold tracking-[0.16em] text-gold uppercase transition-colors hover:bg-gold hover:text-brand-deep"
+            className="rounded-xs border border-gold/70 px-4 py-2.5 text-[0.6875rem] font-bold tracking-[0.12em] whitespace-nowrap text-gold uppercase transition-colors hover:bg-gold hover:text-brand-deep xl:px-5 xl:text-[0.75rem]"
           >
             Falar com a advogada
           </a>

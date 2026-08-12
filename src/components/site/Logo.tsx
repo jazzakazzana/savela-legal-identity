@@ -15,11 +15,11 @@ export function Logo({ tone = "light" }: { tone?: "light" | "dark" }) {
       >
         PS
       </span>
-      <span className={`flex flex-col leading-none ${main}`}>
-        <span className="font-display text-base tracking-[0.18em] uppercase">
+      <span className={`flex flex-col leading-none whitespace-nowrap ${main}`}>
+        <span className="font-display text-sm tracking-[0.16em] uppercase sm:text-base">
           Patrícia Savela
         </span>
-        <span className="mt-1 text-[0.5625rem] font-light tracking-[0.3em] uppercase opacity-70">
+        <span className="mt-1.5 text-[0.5rem] font-light tracking-[0.22em] uppercase opacity-70 sm:text-[0.5625rem]">
           Advocacia e Consultoria Jurídica
         </span>
       </span>
