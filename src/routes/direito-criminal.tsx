@@ -20,7 +20,6 @@ export const Route = createFileRoute("/direito-criminal")({
       ldScript(
         breadcrumbSchema([
           { name: "Início", path: "/" },
-          { name: "Atuação", path: "/direito-criminal" },
           { name: "Direito Criminal", path: "/direito-criminal" },
         ]),
       ),
