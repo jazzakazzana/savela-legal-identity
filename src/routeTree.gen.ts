@@ -18,6 +18,11 @@ import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SustentacaoOralRouteImport } from './routes/sustentacao-oral'
 import { Route as TribunalDoJuriRouteImport } from './routes/tribunal-do-juri'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminConteudosIndexRouteImport } from './routes/admin.conteudos.index'
+import { Route as AdminConteudosNovoRouteImport } from './routes/admin.conteudos.novo'
+import { Route as AdminConteudosIdRouteImport } from './routes/admin.conteudos.$id'
 import { Route as ConteudosIndexRouteImport } from './routes/conteudos.index'
 import { Route as ConteudosSlugRouteImport } from './routes/conteudos.$slug'
 
@@ -66,6 +71,31 @@ const TribunalDoJuriRoute = TribunalDoJuriRouteImport.update({
   path: '/tribunal-do-juri',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminConteudosIndexRoute = AdminConteudosIndexRouteImport.update({
+  id: '/admin/conteudos/',
+  path: '/admin/conteudos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminConteudosNovoRoute = AdminConteudosNovoRouteImport.update({
+  id: '/admin/conteudos/novo',
+  path: '/admin/conteudos/novo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminConteudosIdRoute = AdminConteudosIdRouteImport.update({
+  id: '/admin/conteudos/$id',
+  path: '/admin/conteudos/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ConteudosIndexRoute = ConteudosIndexRouteImport.update({
   id: '/conteudos/',
   path: '/conteudos/',
@@ -87,6 +117,11 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sustentacao-oral': typeof SustentacaoOralRoute
   '/tribunal-do-juri': typeof TribunalDoJuriRoute
+  '/admin/': typeof AdminIndexRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/conteudos/': typeof AdminConteudosIndexRoute
+  '/admin/conteudos/novo': typeof AdminConteudosNovoRoute
+  '/admin/conteudos/$id': typeof AdminConteudosIdRoute
   '/conteudos/$slug': typeof ConteudosSlugRoute
   '/conteudos/': typeof ConteudosIndexRoute
 }
@@ -100,6 +135,11 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sustentacao-oral': typeof SustentacaoOralRoute
   '/tribunal-do-juri': typeof TribunalDoJuriRoute
+  '/admin': typeof AdminIndexRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/conteudos': typeof AdminConteudosIndexRoute
+  '/admin/conteudos/novo': typeof AdminConteudosNovoRoute
+  '/admin/conteudos/$id': typeof AdminConteudosIdRoute
   '/conteudos/$slug': typeof ConteudosSlugRoute
   '/conteudos': typeof ConteudosIndexRoute
 }
@@ -114,6 +154,11 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sustentacao-oral': typeof SustentacaoOralRoute
   '/tribunal-do-juri': typeof TribunalDoJuriRoute
+  '/admin/': typeof AdminIndexRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/conteudos/': typeof AdminConteudosIndexRoute
+  '/admin/conteudos/novo': typeof AdminConteudosNovoRoute
+  '/admin/conteudos/$id': typeof AdminConteudosIdRoute
   '/conteudos/$slug': typeof ConteudosSlugRoute
   '/conteudos/': typeof ConteudosIndexRoute
 }
@@ -129,6 +174,11 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sustentacao-oral'
     | '/tribunal-do-juri'
+    | '/admin/'
+    | '/admin/login'
+    | '/admin/conteudos/'
+    | '/admin/conteudos/novo'
+    | '/admin/conteudos/$id'
     | '/conteudos/$slug'
     | '/conteudos/'
   fileRoutesByTo: FileRoutesByTo
@@ -142,6 +192,11 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sustentacao-oral'
     | '/tribunal-do-juri'
+    | '/admin'
+    | '/admin/login'
+    | '/admin/conteudos'
+    | '/admin/conteudos/novo'
+    | '/admin/conteudos/$id'
     | '/conteudos/$slug'
     | '/conteudos'
   id:
@@ -155,6 +210,11 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sustentacao-oral'
     | '/tribunal-do-juri'
+    | '/admin/'
+    | '/admin/login'
+    | '/admin/conteudos/'
+    | '/admin/conteudos/novo'
+    | '/admin/conteudos/$id'
     | '/conteudos/$slug'
     | '/conteudos/'
   fileRoutesById: FileRoutesById
@@ -169,6 +229,11 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SustentacaoOralRoute: typeof SustentacaoOralRoute
   TribunalDoJuriRoute: typeof TribunalDoJuriRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminConteudosIndexRoute: typeof AdminConteudosIndexRoute
+  AdminConteudosNovoRoute: typeof AdminConteudosNovoRoute
+  AdminConteudosIdRoute: typeof AdminConteudosIdRoute
   ConteudosSlugRoute: typeof ConteudosSlugRoute
   ConteudosIndexRoute: typeof ConteudosIndexRoute
 }
@@ -238,6 +303,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TribunalDoJuriRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/conteudos/': {
+      id: '/admin/conteudos/'
+      path: '/admin/conteudos'
+      fullPath: '/admin/conteudos/'
+      preLoaderRoute: typeof AdminConteudosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/conteudos/novo': {
+      id: '/admin/conteudos/novo'
+      path: '/admin/conteudos/novo'
+      fullPath: '/admin/conteudos/novo'
+      preLoaderRoute: typeof AdminConteudosNovoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/conteudos/$id': {
+      id: '/admin/conteudos/$id'
+      path: '/admin/conteudos/$id'
+      fullPath: '/admin/conteudos/$id'
+      preLoaderRoute: typeof AdminConteudosIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/conteudos/': {
       id: '/conteudos/'
       path: '/conteudos'
@@ -265,6 +365,11 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SustentacaoOralRoute: SustentacaoOralRoute,
   TribunalDoJuriRoute: TribunalDoJuriRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminConteudosIndexRoute: AdminConteudosIndexRoute,
+  AdminConteudosNovoRoute: AdminConteudosNovoRoute,
+  AdminConteudosIdRoute: AdminConteudosIdRoute,
   ConteudosSlugRoute: ConteudosSlugRoute,
   ConteudosIndexRoute: ConteudosIndexRoute,
 }
