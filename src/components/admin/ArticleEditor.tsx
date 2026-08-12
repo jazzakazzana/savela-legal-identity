@@ -18,6 +18,13 @@ interface ArticleEditorProps {
   articleId?: string;
 }
 
+type NullableTextField =
+  | "excerpt"
+  | "category"
+  | "cover_image_alt"
+  | "seo_title"
+  | "seo_description";
+
 const inputClass =
   "mt-2 w-full border border-brand/20 bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus:border-gold";
 const labelClass = "text-[0.6875rem] font-bold tracking-[0.16em] text-brand uppercase";
@@ -76,19 +83,8 @@ export function ArticleEditor({ session, articleId }: ArticleEditorProps) {
 
   const coverUrl = useMemo(() => articleCoverUrl(form.cover_image_path), [form.cover_image_path]);
 
-  function setTextField(
-    key:
-      | "title"
-      | "slug"
-      | "excerpt"
-      | "content"
-      | "category"
-      | "cover_image_alt"
-      | "seo_title"
-      | "seo_description",
-    value: string,
-  ) {
-    setForm((current) => ({ ...current, [key]: value || null } as CmsArticleInput));
+  function setNullableField(key: NullableTextField, value: string) {
+    setForm((current) => ({ ...current, [key]: value || null }));
   }
 
   function handleTitle(value: string) {
@@ -208,7 +204,7 @@ export function ArticleEditor({ session, articleId }: ArticleEditorProps) {
             <input
               id="category"
               value={form.category ?? ""}
-              onChange={(event) => setTextField("category", event.target.value)}
+              onChange={(event) => setNullableField("category", event.target.value)}
               className={inputClass}
               maxLength={100}
             />
@@ -218,7 +214,7 @@ export function ArticleEditor({ session, articleId }: ArticleEditorProps) {
             <textarea
               id="excerpt"
               value={form.excerpt ?? ""}
-              onChange={(event) => setTextField("excerpt", event.target.value)}
+              onChange={(event) => setNullableField("excerpt", event.target.value)}
               rows={3}
               className={inputClass}
               maxLength={400}
@@ -229,7 +225,7 @@ export function ArticleEditor({ session, articleId }: ArticleEditorProps) {
             <textarea
               id="content"
               value={form.content}
-              onChange={(event) => setTextField("content", event.target.value)}
+              onChange={(event) => setForm((current) => ({ ...current, content: event.target.value }))}
               rows={20}
               className={`${inputClass} leading-relaxed`}
               required
@@ -247,7 +243,7 @@ export function ArticleEditor({ session, articleId }: ArticleEditorProps) {
             <input
               id="seo-title"
               value={form.seo_title ?? ""}
-              onChange={(event) => setTextField("seo_title", event.target.value)}
+              onChange={(event) => setNullableField("seo_title", event.target.value)}
               className={inputClass}
               maxLength={70}
               placeholder={form.title || "Título exibido no Google"}
@@ -258,7 +254,7 @@ export function ArticleEditor({ session, articleId }: ArticleEditorProps) {
             <textarea
               id="seo-description"
               value={form.seo_description ?? ""}
-              onChange={(event) => setTextField("seo_description", event.target.value)}
+              onChange={(event) => setNullableField("seo_description", event.target.value)}
               rows={4}
               className={inputClass}
               maxLength={180}
@@ -333,7 +329,7 @@ export function ArticleEditor({ session, articleId }: ArticleEditorProps) {
             <input
               id="cover-alt"
               value={form.cover_image_alt ?? ""}
-              onChange={(event) => setTextField("cover_image_alt", event.target.value)}
+              onChange={(event) => setNullableField("cover_image_alt", event.target.value)}
               className={inputClass}
               maxLength={180}
             />
