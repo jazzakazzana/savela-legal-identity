@@ -24,8 +24,8 @@ export const Route = createFileRoute("/conteudos/$slug")({
         path,
         type: "article",
         noindex: !loaderData.published,
-        publishedTime: loaderData.datePublished || undefined,
-        modifiedTime: loaderData.dateModified || undefined,
+        ...(loaderData.datePublished ? { publishedTime: loaderData.datePublished } : {}),
+        ...(loaderData.dateModified ? { modifiedTime: loaderData.dateModified } : {}),
       }),
       scripts: [
         ldScript({

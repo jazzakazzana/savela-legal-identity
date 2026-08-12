@@ -15,8 +15,11 @@ import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as DireitoCriminalRouteImport } from './routes/direito-criminal'
 import { Route as PatriciaSavelaRouteImport } from './routes/patricia-savela'
 import { Route as PoliticaDePrivacidadeRouteImport } from './routes/politica-de-privacidade'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SustentacaoOralRouteImport } from './routes/sustentacao-oral'
 import { Route as TribunalDoJuriRouteImport } from './routes/tribunal-do-juri'
+import { Route as ConteudosIndexRouteImport } from './routes/conteudos.index'
+import { Route as ConteudosSlugRouteImport } from './routes/conteudos.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -48,6 +51,11 @@ const PoliticaDePrivacidadeRoute = PoliticaDePrivacidadeRouteImport.update({
   path: '/politica-de-privacidade',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SustentacaoOralRoute = SustentacaoOralRouteImport.update({
   id: '/sustentacao-oral',
   path: '/sustentacao-oral',
@@ -58,6 +66,16 @@ const TribunalDoJuriRoute = TribunalDoJuriRouteImport.update({
   path: '/tribunal-do-juri',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConteudosIndexRoute = ConteudosIndexRouteImport.update({
+  id: '/conteudos/',
+  path: '/conteudos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConteudosSlugRoute = ConteudosSlugRouteImport.update({
+  id: '/conteudos/$slug',
+  path: '/conteudos/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -66,8 +84,11 @@ export interface FileRoutesByFullPath {
   '/direito-criminal': typeof DireitoCriminalRoute
   '/patricia-savela': typeof PatriciaSavelaRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sustentacao-oral': typeof SustentacaoOralRoute
   '/tribunal-do-juri': typeof TribunalDoJuriRoute
+  '/conteudos/$slug': typeof ConteudosSlugRoute
+  '/conteudos/': typeof ConteudosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -76,8 +97,11 @@ export interface FileRoutesByTo {
   '/direito-criminal': typeof DireitoCriminalRoute
   '/patricia-savela': typeof PatriciaSavelaRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sustentacao-oral': typeof SustentacaoOralRoute
   '/tribunal-do-juri': typeof TribunalDoJuriRoute
+  '/conteudos/$slug': typeof ConteudosSlugRoute
+  '/conteudos': typeof ConteudosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -87,8 +111,11 @@ export interface FileRoutesById {
   '/direito-criminal': typeof DireitoCriminalRoute
   '/patricia-savela': typeof PatriciaSavelaRoute
   '/politica-de-privacidade': typeof PoliticaDePrivacidadeRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sustentacao-oral': typeof SustentacaoOralRoute
   '/tribunal-do-juri': typeof TribunalDoJuriRoute
+  '/conteudos/$slug': typeof ConteudosSlugRoute
+  '/conteudos/': typeof ConteudosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -99,8 +126,11 @@ export interface FileRouteTypes {
     | '/direito-criminal'
     | '/patricia-savela'
     | '/politica-de-privacidade'
+    | '/sitemap.xml'
     | '/sustentacao-oral'
     | '/tribunal-do-juri'
+    | '/conteudos/$slug'
+    | '/conteudos/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -109,8 +139,11 @@ export interface FileRouteTypes {
     | '/direito-criminal'
     | '/patricia-savela'
     | '/politica-de-privacidade'
+    | '/sitemap.xml'
     | '/sustentacao-oral'
     | '/tribunal-do-juri'
+    | '/conteudos/$slug'
+    | '/conteudos'
   id:
     | '__root__'
     | '/'
@@ -119,8 +152,11 @@ export interface FileRouteTypes {
     | '/direito-criminal'
     | '/patricia-savela'
     | '/politica-de-privacidade'
+    | '/sitemap.xml'
     | '/sustentacao-oral'
     | '/tribunal-do-juri'
+    | '/conteudos/$slug'
+    | '/conteudos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -130,8 +166,11 @@ export interface RootRouteChildren {
   DireitoCriminalRoute: typeof DireitoCriminalRoute
   PatriciaSavelaRoute: typeof PatriciaSavelaRoute
   PoliticaDePrivacidadeRoute: typeof PoliticaDePrivacidadeRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SustentacaoOralRoute: typeof SustentacaoOralRoute
   TribunalDoJuriRoute: typeof TribunalDoJuriRoute
+  ConteudosSlugRoute: typeof ConteudosSlugRoute
+  ConteudosIndexRoute: typeof ConteudosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -178,6 +217,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PoliticaDePrivacidadeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sustentacao-oral': {
       id: '/sustentacao-oral'
       path: '/sustentacao-oral'
@@ -192,6 +238,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TribunalDoJuriRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conteudos/': {
+      id: '/conteudos/'
+      path: '/conteudos'
+      fullPath: '/conteudos/'
+      preLoaderRoute: typeof ConteudosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conteudos/$slug': {
+      id: '/conteudos/$slug'
+      path: '/conteudos/$slug'
+      fullPath: '/conteudos/$slug'
+      preLoaderRoute: typeof ConteudosSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -202,8 +262,11 @@ const rootRouteChildren: RootRouteChildren = {
   DireitoCriminalRoute: DireitoCriminalRoute,
   PatriciaSavelaRoute: PatriciaSavelaRoute,
   PoliticaDePrivacidadeRoute: PoliticaDePrivacidadeRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SustentacaoOralRoute: SustentacaoOralRoute,
   TribunalDoJuriRoute: TribunalDoJuriRoute,
+  ConteudosSlugRoute: ConteudosSlugRoute,
+  ConteudosIndexRoute: ConteudosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -33,7 +33,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           for (const article of publishedArticles) {
             entries.push({
               path: `/conteudos/${article.slug}`,
-              lastmod: article.dateModified || undefined,
+              ...(article.dateModified ? { lastmod: article.dateModified } : {}),
               changefreq: "yearly",
               priority: "0.6",
             });
