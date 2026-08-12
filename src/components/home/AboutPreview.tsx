@@ -1,4 +1,4 @@
-import profileImage from "@/assets/patricia-profile.jpg";
+import profileAsset from "@/assets/retrato.png.asset.json";
 import { Figure } from "@/components/site/Figure";
 import { CtaLink } from "@/components/site/Cta";
 import { siteConfig } from "@/config/site";
@@ -17,10 +17,11 @@ export function AboutPreview() {
         <div className="relative aspect-[4/5] overflow-hidden border border-border lg:sticky lg:top-32">
           <Figure
             slot="patricia-profile"
-            src={profileImage}
-            alt="Espaço reservado para o retrato profissional de Patrícia Savela"
+            src={profileAsset.url}
+            alt="Retrato profissional da advogada Patrícia Savela"
             width={1000}
             height={1250}
+            objectPosition="center top"
           />
         </div>
 
