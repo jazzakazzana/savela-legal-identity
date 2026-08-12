@@ -7,7 +7,7 @@ import { Figure } from "@/components/site/Figure";
 import { CtaLink } from "@/components/site/Cta";
 import profileAsset from "@/assets/retrato.png.asset.json";
 import { siteConfig } from "@/config/site";
-import { seoMeta, personSchema, breadcrumbSchema, ldScript } from "@/lib/seo";
+import { seoMeta, personSchema, profilePageSchema, breadcrumbSchema, ldScript } from "@/lib/seo";
 
 export const Route = createFileRoute("/patricia-savela")({
   component: Page,
@@ -21,6 +21,7 @@ export const Route = createFileRoute("/patricia-savela")({
     }),
     scripts: [
       ldScript(personSchema),
+      ldScript(profilePageSchema),
       ldScript(
         breadcrumbSchema([
           { name: "Início", path: "/" },
@@ -90,15 +91,9 @@ function Page() {
             />
 
             <div className="mt-12 flex flex-wrap gap-4">
-              <CtaLink to="/direito-criminal" variant="outline">
-                Direito Criminal
-              </CtaLink>
-              <CtaLink to="/tribunal-do-juri" variant="outline">
-                Tribunal do Júri
-              </CtaLink>
-              <CtaLink to="/sustentacao-oral" variant="outline">
-                Sustentação Oral
-              </CtaLink>
+              <CtaLink to="/direito-criminal" variant="outline">Direito Criminal</CtaLink>
+              <CtaLink to="/tribunal-do-juri" variant="outline">Tribunal do Júri</CtaLink>
+              <CtaLink to="/sustentacao-oral" variant="outline">Sustentação Oral</CtaLink>
             </div>
           </div>
         </div>
