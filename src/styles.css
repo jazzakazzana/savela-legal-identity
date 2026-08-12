@@ -5,6 +5,20 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
+ * FONTE PROPRIETÁRIA — Flatline Sans
+ * Substituir o arquivo local quando disponível (colocar em /public/fonts/).
+ * Enquanto isso, o fallback (Cormorant Garamond) é utilizado automaticamente.
+ *
+ * @font-face {
+ *   font-family: "Flatline Sans";
+ *   src: url("/fonts/FlatlineSans-Regular.woff2") format("woff2");
+ *   font-weight: 400;
+ *   font-style: normal;
+ *   font-display: swap;
+ * }
+ */
+
+/*
  * Design system definition.
  *
  * The @theme inline block maps CSS custom properties to Tailwind utility
@@ -59,29 +73,54 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Marca */
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-offwhite: var(--offwhite);
+  --color-ink: var(--ink);
+  --color-graphite: var(--graphite);
+
+  --font-display: var(--font-display-family);
+  --font-sans: var(--font-sans-family);
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.25rem;
+
+  /* SUBSTITUIR "Flatline Sans" pelo arquivo real quando disponível */
+  --font-display-family: "Flatline Sans", "Cormorant Garamond", Georgia, serif;
+  --font-sans-family: "Lato", ui-sans-serif, system-ui, sans-serif;
+
+  --brand: oklch(0.371 0.056 190.2); /* #004D4A */
+  --brand-deep: oklch(0.312 0.049 190.5); /* #003B39 */
+  --gold: oklch(0.807 0.132 84.6); /* #E9B94A */
+  --gold-light: oklch(0.879 0.098 88.5); /* #F3D277 */
+  --offwhite: oklch(0.963 0.008 92.5); /* #F5F3ED */
+  --ink: oklch(0.213 0.011 174.5); /* #17211F */
+  --graphite: oklch(0.578 0.008 174.5); /* #707977 */
+
   --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --foreground: var(--ink);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: var(--ink);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --popover-foreground: var(--ink);
+  --primary: var(--brand);
+  --primary-foreground: oklch(0.99 0.005 92);
+  --secondary: var(--offwhite);
+  --secondary-foreground: var(--brand-deep);
+  --muted: var(--offwhite);
+  --muted-foreground: var(--graphite);
+  --accent: var(--gold);
+  --accent-foreground: var(--brand-deep);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.898 0.008 174.5);
+  --input: oklch(0.898 0.008 174.5);
+  --ring: var(--gold);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
