@@ -1,14 +1,18 @@
+User-agent: *
+Allow: /
+
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
+# Mecanismo de busca da OpenAI — mantido permitido para descoberta do site.
+User-agent: OAI-SearchBot
 Allow: /
 
-User-agent: facebookexternalhit
+# GPTBot (coleta para treinamento) é controlado separadamente.
+User-agent: GPTBot
 Allow: /
 
-User-agent: *
-Allow: /
+Sitemap: https://patriciasavela.com.br/sitemap.xml
