@@ -11,19 +11,9 @@ type SeoInput = {
   modifiedTime?: string;
 };
 
-export function seoMeta({
-  title,
-  description,
-  path,
-  type = "website",
-  image,
-  noindex,
-  publishedTime,
-  modifiedTime,
-}: SeoInput) {
+export function seoMeta({ title, description, path, type = "website", image, noindex, publishedTime, modifiedTime }: SeoInput) {
   const url = absoluteUrl(path);
   const img = absoluteUrl(image ?? siteConfig.ogImage);
-
   const meta: Array<Record<string, string>> = [
     { title },
     { name: "description", content: description },
@@ -39,19 +29,12 @@ export function seoMeta({
     { name: "twitter:description", content: description },
     { name: "twitter:image", content: img },
   ];
-
   if (noindex) meta.push({ name: "robots", content: "noindex, follow" });
   if (publishedTime) meta.push({ property: "article:published_time", content: publishedTime });
   if (modifiedTime) meta.push({ property: "article:modified_time", content: modifiedTime });
-  if (siteConfig.verification.google)
-    meta.push({ name: "google-site-verification", content: siteConfig.verification.google });
-  if (siteConfig.verification.bing)
-    meta.push({ name: "msvalidate.01", content: siteConfig.verification.bing });
-
-  return {
-    meta,
-    links: [{ rel: "canonical", href: url }],
-  };
+  if (siteConfig.verification.google) meta.push({ name: "google-site-verification", content: siteConfig.verification.google });
+  if (siteConfig.verification.bing) meta.push({ name: "msvalidate.01", content: siteConfig.verification.bing });
+  return { meta, links: [{ rel: "canonical", href: url }] };
 }
 
 export const personSchema = {
@@ -63,7 +46,7 @@ export const personSchema = {
   jobTitle: siteConfig.professional.jobTitle,
   email: `mailto:${siteConfig.contact.email}`,
   telephone: siteConfig.contact.phone,
-  url: siteConfig.domain,
+  url: absoluteUrl("/patricia-savela"),
   address: {
     "@type": "PostalAddress",
     addressLocality: siteConfig.location.city,
@@ -74,13 +57,17 @@ export const personSchema = {
     "@type": "CollegeOrUniversity",
     name: "Universidade do Vale do Rio dos Sinos — Unisinos",
   },
-  knowsAbout: [
-    "Direito Criminal",
-    "Tribunal do Júri",
-    "Sustentação Oral em Tribunais",
-    "Consultoria Jurídica",
-  ],
+  knowsAbout: ["Direito Criminal", "Tribunal do Júri", "Sustentação Oral em Tribunais", "Consultoria Jurídica"],
   identifier: siteConfig.professional.oab,
+};
+
+export const profilePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": `${absoluteUrl("/patricia-savela")}#profile-page`,
+  url: absoluteUrl("/patricia-savela"),
+  name: `${siteConfig.professional.displayName} | Perfil profissional`,
+  mainEntity: { "@id": `${siteConfig.domain}/#patricia-savela` },
 };
 
 export const legalServiceSchema = {
@@ -119,7 +106,4 @@ export function breadcrumbSchema(items: Array<{ name: string; path: string }>) {
   };
 }
 
-export const ldScript = (data: unknown) => ({
-  type: "application/ld+json",
-  children: JSON.stringify(data),
-});
+export const ldScript = (data: unknown) => ({ type: "application/ld+json", children: JSON.stringify(data) });
