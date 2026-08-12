@@ -1,4 +1,4 @@
-import heroImage from "@/assets/patricia-hero.jpg";
+import heroAsset from "@/assets/ambiente.png.asset.json";
 import { Figure } from "@/components/site/Figure";
 import { CtaLink } from "@/components/site/Cta";
 import { siteConfig, whatsappUrl } from "@/config/site";
@@ -43,12 +43,12 @@ export function Hero() {
           <div className="relative aspect-[4/5] overflow-hidden border border-gold/25">
             <Figure
               slot="patricia-hero"
-              src={heroImage}
-              alt="Composição visual institucional da advocacia de Patrícia Savela em São Leopoldo"
+              src={heroAsset.url}
+              alt="Advogada Patrícia Savela, atuante em Direito Criminal em São Leopoldo — RS"
               width={1200}
               height={1500}
               priority
-              objectPosition="center"
+              objectPosition="center top"
             />
           </div>
           <span
