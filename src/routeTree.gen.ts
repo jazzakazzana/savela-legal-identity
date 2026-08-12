@@ -10,33 +10,89 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DireitoCriminalRouteImport } from './routes/direito-criminal'
+import { Route as PatriciaSavelaRouteImport } from './routes/patricia-savela'
+import { Route as SustentacaoOralRouteImport } from './routes/sustentacao-oral'
+import { Route as TribunalDoJuriRouteImport } from './routes/tribunal-do-juri'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DireitoCriminalRoute = DireitoCriminalRouteImport.update({
+  id: '/direito-criminal',
+  path: '/direito-criminal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PatriciaSavelaRoute = PatriciaSavelaRouteImport.update({
+  id: '/patricia-savela',
+  path: '/patricia-savela',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SustentacaoOralRoute = SustentacaoOralRouteImport.update({
+  id: '/sustentacao-oral',
+  path: '/sustentacao-oral',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TribunalDoJuriRoute = TribunalDoJuriRouteImport.update({
+  id: '/tribunal-do-juri',
+  path: '/tribunal-do-juri',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/direito-criminal': typeof DireitoCriminalRoute
+  '/patricia-savela': typeof PatriciaSavelaRoute
+  '/sustentacao-oral': typeof SustentacaoOralRoute
+  '/tribunal-do-juri': typeof TribunalDoJuriRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/direito-criminal': typeof DireitoCriminalRoute
+  '/patricia-savela': typeof PatriciaSavelaRoute
+  '/sustentacao-oral': typeof SustentacaoOralRoute
+  '/tribunal-do-juri': typeof TribunalDoJuriRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/direito-criminal': typeof DireitoCriminalRoute
+  '/patricia-savela': typeof PatriciaSavelaRoute
+  '/sustentacao-oral': typeof SustentacaoOralRoute
+  '/tribunal-do-juri': typeof TribunalDoJuriRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/direito-criminal'
+    | '/patricia-savela'
+    | '/sustentacao-oral'
+    | '/tribunal-do-juri'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/direito-criminal'
+    | '/patricia-savela'
+    | '/sustentacao-oral'
+    | '/tribunal-do-juri'
+  id:
+    | '__root__'
+    | '/'
+    | '/direito-criminal'
+    | '/patricia-savela'
+    | '/sustentacao-oral'
+    | '/tribunal-do-juri'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DireitoCriminalRoute: typeof DireitoCriminalRoute
+  PatriciaSavelaRoute: typeof PatriciaSavelaRoute
+  SustentacaoOralRoute: typeof SustentacaoOralRoute
+  TribunalDoJuriRoute: typeof TribunalDoJuriRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +104,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/direito-criminal': {
+      id: '/direito-criminal'
+      path: '/direito-criminal'
+      fullPath: '/direito-criminal'
+      preLoaderRoute: typeof DireitoCriminalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/patricia-savela': {
+      id: '/patricia-savela'
+      path: '/patricia-savela'
+      fullPath: '/patricia-savela'
+      preLoaderRoute: typeof PatriciaSavelaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sustentacao-oral': {
+      id: '/sustentacao-oral'
+      path: '/sustentacao-oral'
+      fullPath: '/sustentacao-oral'
+      preLoaderRoute: typeof SustentacaoOralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tribunal-do-juri': {
+      id: '/tribunal-do-juri'
+      path: '/tribunal-do-juri'
+      fullPath: '/tribunal-do-juri'
+      preLoaderRoute: typeof TribunalDoJuriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DireitoCriminalRoute: DireitoCriminalRoute,
+  PatriciaSavelaRoute: PatriciaSavelaRoute,
+  SustentacaoOralRoute: SustentacaoOralRoute,
+  TribunalDoJuriRoute: TribunalDoJuriRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
