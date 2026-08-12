@@ -8,7 +8,7 @@ export function PageHero({
 }: {
   eyebrow: string;
   title: string;
-  intro?: string;
+  intro?: string | undefined;
   crumbs: Crumb[];
 }) {
   return (

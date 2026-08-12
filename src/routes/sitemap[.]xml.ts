@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { siteConfig } from "@/config/site";
-import { publishedArticles } from "@/content/articles";
+import { listPublishedArticles } from "@/lib/cms";
 
 const BASE_URL = siteConfig.domain;
 
@@ -27,37 +27,37 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/politica-de-privacidade", changefreq: "yearly", priority: "0.3" },
         ];
 
-        // A listagem e os artigos só entram no sitemap quando houver conteúdo publicado.
+        const publishedArticles = await listPublishedArticles().catch(() => []);
         if (publishedArticles.length > 0) {
-          entries.push({ path: "/conteudos", changefreq: "monthly", priority: "0.6" });
+          entries.push({ path: "/conteudos", changefreq: "weekly", priority: "0.6" });
           for (const article of publishedArticles) {
             entries.push({
               path: `/conteudos/${article.slug}`,
-              ...(article.dateModified ? { lastmod: article.dateModified } : {}),
-              changefreq: "yearly",
+              lastmod: article.updated_at,
+              changefreq: "monthly",
               priority: "0.6",
             });
           }
         }
 
-        const urls = entries.map((e) =>
+        const urls = entries.map((entry) =>
           [
-            `  <url>`,
-            `    <loc>${BASE_URL}${e.path}</loc>`,
-            e.lastmod ? `    <lastmod>${e.lastmod}</lastmod>` : null,
-            e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
-            e.priority ? `    <priority>${e.priority}</priority>` : null,
-            `  </url>`,
+            "  <url>",
+            `    <loc>${BASE_URL}${entry.path}</loc>`,
+            entry.lastmod ? `    <lastmod>${entry.lastmod}</lastmod>` : null,
+            entry.changefreq ? `    <changefreq>${entry.changefreq}</changefreq>` : null,
+            entry.priority ? `    <priority>${entry.priority}</priority>` : null,
+            "  </url>",
           ]
             .filter(Boolean)
             .join("\n"),
         );
 
         const xml = [
-          `<?xml version="1.0" encoding="UTF-8"?>`,
-          `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+          '<?xml version="1.0" encoding="UTF-8"?>',
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
           ...urls,
-          `</urlset>`,
+          "</urlset>",
         ].join("\n");
 
         return new Response(xml, {

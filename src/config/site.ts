@@ -76,5 +76,7 @@ export const whatsappUrl = `https://wa.me/${siteConfig.contact.whatsapp}`;
 export const mailtoUrl = `mailto:${siteConfig.contact.email}`;
 export const telUrl = `tel:+${siteConfig.contact.whatsapp}`;
 
-export const absoluteUrl = (path: string) =>
-  `${siteConfig.domain}${path === "/" ? "/" : path}`;
+export const absoluteUrl = (path: string) => {
+  if (/^https?:\/\//i.test(path)) return path;
+  return `${siteConfig.domain}${path === "/" ? "/" : path}`;
+};
