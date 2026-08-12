@@ -41,37 +41,37 @@ function Page() {
         <Article
           blocks={[
             {
-              heading: "Quais informações são coletadas",
+              heading: "Quais informações podem ser fornecidas",
               body: [
-                "São coletadas apenas as informações voluntariamente fornecidas pelo usuário no formulário de contato: nome, telefone, e-mail, assunto e mensagem.",
-                "Não são coletados dados sensíveis nem informações adicionais além das indicadas acima.",
+                "No momento, este site não possui formulário de envio automático. O contato é realizado pelos canais diretos de WhatsApp e e-mail indicados nas páginas de atendimento e contato.",
+                "Nesses canais, o usuário pode fornecer voluntariamente dados de identificação e informações necessárias ao retorno do contato. Recomenda-se que documentos, dados sensíveis e detalhes confidenciais não sejam enviados no primeiro contato, salvo quando solicitados por meio adequado durante o atendimento.",
               ],
             },
             {
               heading: "Finalidade do tratamento",
               body: [
-                "As informações são utilizadas exclusivamente para responder ao contato realizado e prestar informações sobre atendimento.",
-                "Os dados não são comercializados, cedidos ou compartilhados com terceiros para finalidades promocionais.",
+                "As informações recebidas são utilizadas para responder ao contato realizado, prestar informações sobre atendimento e, quando aplicável, dar continuidade à relação profissional solicitada pelo próprio titular.",
+                "Os dados não são comercializados nem utilizados para finalidades promocionais incompatíveis com o contexto em que foram fornecidos.",
               ],
             },
             {
-              heading: "Formulário de contato",
+              heading: "Dados sensíveis e informações confidenciais",
               body: [
-                "O formulário disponível neste site está preparado para envio, mas ainda não está integrado a um serviço de processamento de mensagens.",
-                "Enquanto essa integração não estiver ativa, o contato deve ser realizado por WhatsApp ou e-mail.",
+                "Dependendo do conteúdo enviado voluntariamente pelo usuário, a comunicação pode conter dados pessoais sensíveis ou informações protegidas por dever de confidencialidade profissional.",
+                "Quando recebidas, essas informações devem ser tratadas com acesso restrito e somente na medida necessária para a finalidade do atendimento correspondente.",
               ],
             },
             {
               heading: "Cookies e ferramentas de análise",
               body: [
                 "Este site não utiliza cookies não essenciais nem ferramentas de análise de audiência no momento.",
-                "Caso ferramentas de análise sejam ativadas futuramente, será solicitado o consentimento prévio adequado antes da utilização de cookies que o exijam.",
+                "Caso ferramentas de análise sejam ativadas futuramente, a política será atualizada e os mecanismos de consentimento aplicáveis serão implementados conforme a configuração adotada.",
               ],
             },
             {
               heading: "Direitos do titular",
               body: [
-                "Nos termos da Lei nº 13.709/2018 (LGPD), o titular pode solicitar confirmação de tratamento, acesso, correção, anonimização ou eliminação dos seus dados.",
+                "Nos termos da Lei nº 13.709/2018 (LGPD), o titular pode solicitar informações sobre o tratamento de seus dados e exercer os direitos previstos na legislação aplicável.",
                 `As solicitações podem ser encaminhadas para ${siteConfig.contact.email}.`,
               ],
             },

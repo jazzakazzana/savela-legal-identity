@@ -12,7 +12,7 @@ export const Route = createFileRoute("/contato")({
     ...seoMeta({
       title: "Contato | Dra. Patrícia Savela — Advocacia Criminal",
       description:
-        "Entre em contato com a advogada Patrícia Savela (OAB/RS 119.240) por WhatsApp, e-mail ou formulário. São Leopoldo — Rio Grande do Sul.",
+        "Entre em contato com a advogada Patrícia Savela (OAB/RS 119.240) por WhatsApp ou e-mail. São Leopoldo — Rio Grande do Sul.",
       path: "/contato",
     }),
     scripts: [
@@ -33,7 +33,7 @@ function Page() {
       <PageHero
         eyebrow="Contato"
         title="Contato"
-        intro="Envie uma mensagem ou utilize os canais diretos de atendimento."
+        intro="Utilize os canais diretos para solicitar informações sobre atendimento e disponibilidade."
         crumbs={[
           { name: "Início", path: "/" },
           { name: "Contato", path: "/contato" },
@@ -43,7 +43,7 @@ function Page() {
       <Section>
         <div className="grid gap-14 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
-            <h2 className="font-display text-3xl text-brand">Formulário de contato</h2>
+            <h2 className="font-display text-3xl text-brand">Entre em contato</h2>
             <span className="hairline mt-6 mb-10 max-w-24" aria-hidden="true" />
             <ContactForm />
           </div>
